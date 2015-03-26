@@ -18,6 +18,17 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+// Customized color calm to match Skosay's Theme #00b9f2
+$calm:                            #00b9f2 !default;
+$energized:                       #C4702F !default;
+
+.ng-invlaid.ng-dirty {
+    border-color: FA787E;
+}
+
+.ng-vlaid.ng-dirty {
+    border-color: 78FA89;
+}
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-

@@ -1,0 +1,8 @@
+[
+    { title: 'Kenny Rogers', id: 1 },
+    { title: 'National Bookstore', id: 2 },
+    { title: 'UP-Ayala TBI', id: 3 },
+    { title: 'Shell', id: 4 },
+    { title: 'BPI', id: 5 },
+    { title: 'Hap Chan', id: 6 }
+];

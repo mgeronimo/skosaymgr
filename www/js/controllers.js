@@ -28,7 +28,6 @@ angular.module('skosayMgr.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);    
       
     $http.post('http://devapp.skosay.com/api/v1/login', $scope.loginData).
       success(function(data, status, headers, config) {
@@ -54,6 +53,26 @@ angular.module('skosayMgr.controllers', [])
     };*/
 
   };
+    
+})
+
+.controller('loginCtrl', function($ionicPopup){
+    this.loginData = {};
+//    this.loginS = $ionicPopup.alert({
+//                title: 'Login Submitted!',
+//                template: 'Thank You!'
+//            });
+        
+        
+         
+//        
+//        function(this.loginData){
+//        console.log(this.loginData,'<<--Submitted Object:loginData');
+        //Submit POST
+        //Reset Login Form this.loginData = {};
+//        console.log(this.loginData,'<<--Cleared Object: loginData');
+//    };
+    
     
 })
 
