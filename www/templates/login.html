@@ -39,13 +39,9 @@
         </div>        
 
         <div class="list list-inset" style="margin-top: -1em; background-color:#00b9f2">
-                
-            <button class="button button-block button-positive"
-                    ng-show = "loginForm.$invalid">Sign In
-            </button>
             
             <button class="button button-block button-energized"
-                    ng-show = "loginForm.$valid"
+                    ng-disabled = "loginForm.$invalid" 
                     ng-click="login()">Sign In 
                 <span class="ion-refreshing"></span>
             </button>
