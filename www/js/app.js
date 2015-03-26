@@ -26,7 +26,7 @@ var app = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers'])
 
   .state('login', {
     url: "/login",
-    abstract: true,
+//    abstract: true,
     templateUrl: "templates/login.html",
 //    controller: 'loginCtrl'
     controller: 'AppCtrl'
@@ -60,5 +60,6 @@ var app = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers'])
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/locations');
+//  $urlRouterProvider.otherwise('/app/locations');
+  $urlRouterProvider.otherwise('/login');
 });
