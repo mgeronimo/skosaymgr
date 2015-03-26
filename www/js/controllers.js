@@ -43,7 +43,7 @@ angular.module('skosayMgr.controllers', [])
       error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        console.log('***ERROR***');
+        alert('***ERROR***');
         console.log(status);
       });
       
