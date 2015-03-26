@@ -16,7 +16,7 @@
       </div>
     </form> -->
 
-<form novalidate class="login-form">
+<form novalidate class="login-form" name="loginForm" ng-controller="loginCtrl" ng-submit="loginForm.$valid && loginCtrl.login(loginCtrl.loginData)">
         <div class="list list-inset"  style="background: #00b9f2">
 
                 <p align="center" style="margin-top:2em;">
@@ -26,13 +26,13 @@
         <div class="list list-inset" class="login-form">
             <label class="item item-input">
                 <input type="email" 
-                       ng-model="loginData.email" 
+                       ng-model="loginCtrl.loginData.email" 
                        placeholder="Your email"
                        required>
             </label>
             <label class="item item-input" class="login-form">
                 <input type="password" 
-                       ng-model="loginData.password"
+                       ng-model="loginCtrl.loginData.password"
                        placeholder="Your password"
                        required>
             </label>
@@ -41,8 +41,16 @@
         <div class="list list-inset" style="margin-top: -1em; background-color:#00b9f2">
                 
             <button class="button button-block button-positive"
-                    ng-click="login()">Sign In
+                    ng-show = "loginForm.$invalid">Sign In
             </button>
+            
+            <button class="button button-block button-energized"
+                    ng-show = "loginForm.$valid"
+                    ng-click="login()">Sign In 
+                <span class="ion-refreshing"></span>
+            </button>
+            
+            <div> loginForm is {{loginForm.$valid}} </div>
             
     </form>
             
@@ -55,8 +63,9 @@
             
             <p>
             
-           Your email:  {{loginData.email}} <br>
-           Your password: {{loginData.password}}
+           Your email:  {{loginCtrl.loginData.email}} <br>
+           Your password: {{loginCtrl.loginData.password}} <br>
+                
             </p>
         </div>
 
