@@ -28,7 +28,6 @@ angular.module('skosayMgr.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-      
     $http.post('http://devapp.skosay.com/api/v1/login', $scope.loginData).
       success(function(data, status, headers, config) {
         // this callback will be called asynchronously
@@ -43,7 +42,7 @@ angular.module('skosayMgr.controllers', [])
       error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        alert('***ERROR***');
+        console.log('***ERROR***');
         console.log(status);
       });
       
