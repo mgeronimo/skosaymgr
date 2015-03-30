@@ -1,4 +1,4 @@
-var app = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers'])
+var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', 'skosayMgr.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -14,6 +14,10 @@ var app = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers'])
   });
 })
 
+.constant('ApiEndpoint', {
+  url: 'http://localhost:8100/api'
+})
+
     .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -21,15 +25,36 @@ var app = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers'])
     url: "/app",
     abstract: true,
     templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
+    controller: 'LoginController'
   })
 
   .state('login', {
     url: "/login",
 //    abstract: true,
     templateUrl: "templates/login.html",
-//    controller: 'loginCtrl'
-    controller: 'AppCtrl'
+    controller: 'LoginController'
+//    controller: 'AppCtrl'
+  })
+
+  .state('app.history', {
+    url: "/history",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/history.html",
+        controller: 'NewMessagesController'
+
+      }
+    }
+  })
+
+  .state('app.newMsgs', {
+    url: "/newMsgs",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/newMsgs.html",
+        controller: 'NewMessagesController'
+      }
+    }
   })
 
   .state('app.search', {

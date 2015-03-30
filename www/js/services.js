@@ -1,3 +1,8 @@
+angular.module('skosayMgr.services', ['ngResource'])
+
+.factory('Post', function($resource) {
+  return $resource('/api/post/:id');
+});
 /* var skosayMgr = angular.module('skosayMgr.servic',[]);
 
 skosayMgr.service('LoginService', function($q) {

@@ -1,79 +1,98 @@
 angular.module('skosayMgr.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
-  // Form data for the login modal
-  $scope.loginData = {
-  
-      email: '',
-      password: ''
+.controller('NewMessagesController', function($http, $ionicPopup, ApiEndpoint) {
+  //
+  this.access_token = "V8NvolnV52nIquvifNnxWoBh4myqTBsAm1KChet2";
+    
+    this.getNewMsgs = function() {
+        this.newMsgs = {};
+                  
+        console.log(this.newMsgs, 'Before GET');
+
+      var req = {
+            method: 'GET',
+             url: ApiEndpoint.url+'/v1/new',
+            headers: {
+                   'Authorization': 'V8NvolnV52nIquvifNnxWoBh4myqTBsAm1KChet2'
+                 }
+      };
       
-  };
-
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
+//    $http.post(ApiEndpoint.url+'/v1/managerLogin', $scope.loginData).
+      $http(req)
+        .success(function(data, status, headers, config) {
+          
+          this.newMsgs = data;
+          
+        // this callback will be called asynchronously
+        // when the response is available
+        console.log(this.newMsgs, '***SUCCESS***');
+          $state.go('app.history',this.newMsgs);
+        })
+        .error(function(data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        alert('***ERROR***'+'\n\n'+
+              'Status: '+status+'\n\n'+
+              'Details: '+data.error+'\n\n'+
+              'Desc: '+data.error_description);
+        console.log($scope, config,status, data, status,headers);
+      });
       
-    $http.post('http://devapp.skosay.com/api/v1/login', $scope.loginData).
-      success(function(data, status, headers, config) {
+    };
+
+})
+
+.controller('LoginController', function($http, ApiEndpoint){
+    
+    this.loginData = {
+        email: '',
+        password: ''
+    };
+    
+    this.login = function (loginData){
+
+      console.log(loginData, 'Before POST');
+
+      var req = {
+            method: 'POST',
+             url: ApiEndpoint.url+'/v1/managerLogin',
+//            headers: {
+//                 'Content-Type': undefined
+//             },
+            data: { 
+                username: loginData.email,
+                grant_type: 'password',         
+                client_secret: '12345',
+                client_id: loginData.email,
+                password: loginData.password
+            },
+      };
+      
+//    $http.post(ApiEndpoint.url+'/v1/managerLogin', $scope.loginData).
+        $http(req)
+        .success(function(data, status, headers, config) {
+          
+          $scope.token = {
+              access_token: data.access_token,
+              token_type: data.token_type,
+              expires_in: data.expires_in
+          };
+          
+          $scope.status = status;
         // this callback will be called asynchronously
         // when the response is available
         console.log('***SUCCESS***');
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-          $scope.closeLogin();
-        }, 1000);
       }).
       error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        alert('***ERROR***');
-        console.log(status);
+        alert('***ERROR***'+'\n\n'+
+              'Status: '+status+'\n\n'+
+              'Details: '+data.error+'\n\n'+
+              'Desc: '+data.error_description);
+        console.log($scope, config,status, data, status,headers);
       });
-      
-    /*var handleSuccess = function(data, status) {
-    $scope.variableName = data;
-    console.log($scope.variableName);
-    };*/
-
-  };
-    
-})
-
-.controller('loginCtrl', function($ionicPopup){
-    this.loginData = {};
-//    this.loginS = $ionicPopup.alert({
-//                title: 'Login Submitted!',
-//                template: 'Thank You!'
-//            });
-        
-        
-         
-//        
-//        function(this.loginData){
-//        console.log(this.loginData,'<<--Submitted Object:loginData');
-        //Submit POST
-        //Reset Login Form this.loginData = {};
-//        console.log(this.loginData,'<<--Cleared Object: loginData');
-//    };
-    
-    
+    }
 })
 
 .controller('locationsCtrl', function($scope) {
