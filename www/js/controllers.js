@@ -69,23 +69,22 @@ angular.module('skosayMgr.controllers', [])
       };
       
 //    $http.post(ApiEndpoint.url+'/v1/managerLogin', $scope.loginData).
+        
         $http(req)
-        .success(function(data, status, headers, config) {
+            .success(function(data, status, headers, config) {
           
-          $scope.token = {
-              access_token: data.access_token,
-              token_type: data.token_type,
-              expires_in: data.expires_in
-          };
-          
-          $scope.status = status;
-        // this callback will be called asynchronously
-        // when the response is available
-        console.log('***SUCCESS***');
-      }).
-      error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
+                  $scope.token = {
+                      access_token: data.access_token,
+                      token_type: data.token_type,
+                      expires_in: data.expires_in
+                  };
+
+                  $scope.status = status;
+
+                console.log('***SUCCESS***');
+        })
+            .error(function(data, status, headers, config) {
+
         alert('***ERROR***'+'\n\n'+
               'Status: '+status+'\n\n'+
               'Details: '+data.error+'\n\n'+
