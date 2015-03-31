@@ -56,15 +56,15 @@ angular.module('skosayMgr.controllers', [])
       var req = {
             method: 'POST',
              url: ApiEndpoint.url+'/v1/managerLogin',
-//            headers: {
-//                 'Content-Type': undefined
-//             },
+            headers: {
+                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+         },
             data: { 
-                username: loginData.email,
-                grant_type: 'password',         
-                client_secret: '12345',
-                client_id: loginData.email,
-                password: loginData.password
+                "grant_type": "password",         
+                "client_id": loginData.email,
+                "username": loginData.email,
+                "password": loginData.password,
+                "client_secret": "12345"
             },
       };
       
@@ -89,7 +89,7 @@ angular.module('skosayMgr.controllers', [])
               'Status: '+status+'\n\n'+
               'Details: '+data.error+'\n\n'+
               'Desc: '+data.error_description);
-        console.log($scope, config,status, data, status,headers);
+        console.log(config,status, data, status,headers);
       });
     }
 })

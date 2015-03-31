@@ -14,6 +14,20 @@ var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', '
   });
 })
 
+.config(function ($httpProvider) {
+    $httpProvider.defaults.transformRequest.push(function (data, headerGetter) {
+        console.log("transform Request");
+        return data;
+    });
+    
+    $httpProvider.defaults.transformResponse.push(function (data, headerGetter) {
+        console.log("transform Response");
+        return data;
+    });
+
+//    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+})
+
 .constant('ApiEndpoint', {
   url: 'http://localhost:8100/api'
 })
