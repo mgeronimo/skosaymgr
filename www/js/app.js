@@ -62,7 +62,7 @@ var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', '
   })
 
   .state('app.newMsgs', {
-    url: "/newMsgs",
+    url: "/newMsgs/:id",
     views: {
       'menuContent': {
         templateUrl: "templates/newMsgs.html",

@@ -1,8 +1,8 @@
 angular.module('skosayMgr.controllers', [])
 
-.controller('NewMessagesController', function($http, $ionicPopup, ApiEndpoint) {
+.controller('NewMessagesController', function($http, $ionicPopup, $scope, $stateParams, ApiEndpoint) {
   //
-  this.access_token = "V8NvolnV52nIquvifNnxWoBh4myqTBsAm1KChet2";
+  /*this.access_token = "V8NvolnV52nIquvifNnxWoBh4myqTBsAm1KChet2";
     
     this.getNewMsgs = function() {
         this.newMsgs = {};
@@ -38,11 +38,26 @@ angular.module('skosayMgr.controllers', [])
         console.log($scope, config,status, data, status,headers);
       });
       
-    };
+    };*/
+    $scope.id = $stateParams.id;
+    console.log('Here you go'+'\n'+$scope.id);
+    
+    var req = {
+            method: 'GET',
+            url: ApiEndpoint.url+'/v1/new'
+      };
+        
+    $http(req)
+        .success(function(data, status, headers, config) {
+            console.log(data.storeDept);
+        })
+        .error(function(data, status, headers, config) {
+            alert('Error!');
+        });
 
 })
 
-.controller('LoginController', function($http, ApiEndpoint){
+.controller('LoginController', function($http, $state, ApiEndpoint){
     
     this.loginData = {
         email: '',
@@ -51,46 +66,50 @@ angular.module('skosayMgr.controllers', [])
     
     this.login = function (loginData){
 
-      console.log(loginData, 'Before POST');
+      console.log(ApiEndpoint);
 
       var req = {
             method: 'POST',
-             url: ApiEndpoint.url+'/v1/managerLogin',
-            headers: {
-                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-         },
+            url: ApiEndpoint.url+'/v1/managerLogin',
             data: { 
-                "grant_type": "password",         
-                "client_id": loginData.email,
-                "username": loginData.email,
-                "password": loginData.password,
-                "client_secret": "12345"
+                //"grant_type": "password",         
+                username: loginData.email,
+                password: loginData.password,
+                client_id: loginData.email,
+                client_secret: "12345",
+                grant_type: "password"
             },
+            //headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       };
+        
+        console.log(req);
       
 //    $http.post(ApiEndpoint.url+'/v1/managerLogin', $scope.loginData).
         
         $http(req)
             .success(function(data, status, headers, config) {
           
-                  $scope.token = {
+                  /*$scope.token = {
                       access_token: data.access_token,
                       token_type: data.token_type,
                       expires_in: data.expires_in
-                  };
+                  };*/
 
-                  $scope.status = status;
+                //$scope.status = status;
 
-                console.log('***SUCCESS***');
+                console.log('***SUCCESS***'+'\n'+data.status_code);
+                //$location.path('app/newMsgs');
+                $state.go('app.newMsgs', { id: data.userid });
         })
-            .error(function(data, status, headers, config) {
+        .error(function(data, status, headers, config) {
 
-        alert('***ERROR***'+'\n\n'+
-              'Status: '+status+'\n\n'+
-              'Details: '+data.error+'\n\n'+
-              'Desc: '+data.error_description);
-        console.log(config,status, data, status,headers);
-      });
+            /*console.log('***ERROR***'+'\n\n'+
+                  'Status: '+status+'\n\n'+
+                  'Details: '+data.message+'\n\n');
+            
+            console.log(config,status, data, status,headers);*/
+            
+        });
     }
 })
 

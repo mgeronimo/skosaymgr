@@ -1,0 +1,9 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/srdev2/Documents/skosaymgr/platforms/ios/build/emulator/skosayApp.app/www/lib/ionic/js/angular-ui/angular-ui-router.min.js",
+        "/Users/srdev2/Documents/skosaymgr/platforms/ios/build/emulator/skosayApp.app/www/lib/ionic/js/ionic.bundle.min.js",
+        "/Users/srdev2/Documents/skosaymgr/platforms/ios/build/emulator/skosayApp.app/www/lib/ionic/js/ionic.min.js",
+        "/Users/srdev2/Documents/skosaymgr/www/lib/ionic/js/ionic.min.js",
+        "/Users/srdev2/Documents/skosaymgr/www/js/app.js"
+    ]
+}
