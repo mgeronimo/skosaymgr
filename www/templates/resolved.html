@@ -1,8 +1,8 @@
-<ion-view view-title="New Message(s)"
+<ion-view view-title="Resolved"
           >
   <ion-content>
-    <ion-list ng-controller="NewMessagesController as newMsgsCtrl">
-      <ion-item ng-repeat="store in newMsgsCtrl.newList.stores">
+    <ion-list ng-controller="ResolvedController as resolvedCtrl">
+      <ion-item ng-repeat="store in resolvedCtrl.newList.stores">
           <img ng-src="img/icons/{{store.photo}}">
         <h1>{{store.storename}}</h1>
           <h3>{{store.address}}</h3>

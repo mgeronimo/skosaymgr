@@ -3,7 +3,7 @@
     <ion-nav-bar class="bar-calm">
 
             <ion-nav-title>
-                <img src="img/skopic-manager.png">
+                <img ng-src="img/skopic-manager.png">
             </ion-nav-title>
 
       <ion-nav-buttons side="left">
@@ -15,18 +15,18 @@
     <ion-tabs class="tabs-top tabs-icon-top tabs-calm">
 
           <!-- Messages Tab -->
-          <ion-tab title="New / Open" icon-off="ion-ios-plus-outline" icon-on="ion-ios-plus" href="#/tab/messages">
-            <ion-nav-view name="tab-messages"></ion-nav-view>
+          <ion-tab title="New / Open" icon-off="ion-ios-plus-outline" icon-on="ion-ios-plus" href="#/tab/new">
+            <ion-nav-view name="tab-new-msgs"></ion-nav-view>
           </ion-tab>
 
           <!-- Messages Tab -->
-          <ion-tab title="In Process" icon-off="ion-ios-loop" icon-on="ion-ios-loop-strong" href="#/tab/messages">
-            <ion-nav-view name="tab-messages"></ion-nav-view>
+          <ion-tab title="In Process" icon-off="ion-ios-loop" icon-on="ion-ios-loop-strong" href="#/tab/process">
+            <ion-nav-view name="tab-process"></ion-nav-view>
           </ion-tab>
 
           <!-- Search Tab -->
-          <ion-tab title="Resolved" icon-off="ion-ios-checkmark-outline" icon-on="ion-ios-checkmark" href="#/tab/search">
-            <ion-nav-view name="tab-search"></ion-nav-view>
+          <ion-tab title="Resolved" icon-off="ion-ios-checkmark-outline" icon-on="ion-ios-checkmark" href="#/tab/resolved">
+            <ion-nav-view name="tab-resolved"></ion-nav-view>
           </ion-tab>
 
     </ion-tabs>

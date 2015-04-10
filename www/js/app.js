@@ -1,4 +1,4 @@
-var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', 'skosayMgr.services'])
+var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', 'skosayMgr.services', 'skosayMgr.messages'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -13,8 +13,8 @@ var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', '
     }
   });
 })
-
-/* .config(function ($httpProvider) {
+/*
+ .config(function ($httpProvider) {
     $httpProvider.defaults.transformRequest.push(function (data, headerGetter) {
         console.log("transform Request");
         return data;
@@ -23,10 +23,11 @@ var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', '
     $httpProvider.defaults.transformResponse.push(function (data, headerGetter) {
         console.log("transform Response");
         return data;
-    });
+    }); 
 
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-}) */
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/form-data; charset=UTF-8';
+}) 
+*/
 
 .constant('ApiEndpoint', {
   url: 'http://localhost:8100/api'
@@ -35,13 +36,6 @@ var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', '
     .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-   .state('app', {
-    url: "/app",
-    abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'LoginController'
-  })
-
   .state('login', {
     url: "/login",
 //    abstract: true,
@@ -49,24 +43,40 @@ var skosayMgr = angular.module('skosayMgr', ['ionic', 'skosayMgr.controllers', '
     controller: 'LoginController'
 //    controller: 'AppCtrl'
   })
-
-  .state('app.history', {
-    url: "/history",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/history.html",
-        controller: 'NewMessagesController'
-
-      }
-    }
+  
+   .state('app', {
+    url: "/app",
+    abstract: true,
+    templateUrl: "templates/menu.html"
+  //  controller: 'LoginController'
   })
 
   .state('app.newMsgs', {
     url: "/newMsgs/:id",
     views: {
-      'menuContent': {
+      'tab-new-msgs': {
         templateUrl: "templates/newMsgs.html",
         controller: 'NewMessagesController'
+      }
+    }
+  })
+
+  .state('app.inProgress', {
+    url: "/inProgress/:id",
+    views: {
+      'tab-progress': {
+        templateUrl: "templates/inProgress.html",
+        controller: 'InProgressController'
+      }
+    }
+  })
+
+  .state('app.resolved', {
+    url: "/resolved/:id",
+    views: {
+      'tab-resolved': {
+        templateUrl: "templates/resolved.html",
+        controller: 'ResolvedController'
       }
     }
   })

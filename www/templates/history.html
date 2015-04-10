@@ -2,9 +2,11 @@
           ng-controller="NewMessagesController as newMsgsCtrl">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="store in stores"
-                href="#/app/locations/{{store.id}}">
-        {{store.storename}}
+      <ion-item ng-repeat="store in newMsgsCtrl.newMsgs.stores">
+          {{store.id}}
+        {{store.photo}} 
+          <h1>{{store.storename}}</h1> 
+          <p>{{store.address}}</p>
       </ion-item>
     </ion-list>
   </ion-content>
