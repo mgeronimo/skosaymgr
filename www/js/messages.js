@@ -3,7 +3,7 @@ angular.module('skosayMgr.messages', [])
 .controller('NewMessagesController', function($http, $ionicPopup, $scope, $state, $stateParams, ApiEndpoint) {
     $scope.id = $stateParams.id;
 
-    console.log('Here you go'+'\n'+$scope.id);
+    //console.log('Here you go'+'\n'+$scope.id);
     
     var newList = this;
     newList.stores = [];

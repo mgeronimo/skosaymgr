@@ -8,6 +8,9 @@ angular.module('skosayMgr.controllers', [])
     };
     
     this.login = function (loginData){
+        
+        document.getElementById('submitButton').style.display = 'none';
+        document.getElementById('falseButton').style.display = '';
 //
       console.log(ApiEndpoint);
 
@@ -47,6 +50,9 @@ angular.module('skosayMgr.controllers', [])
                   'Details: '+data.message+'\n\n');
             
             console.log(config,status, data, status,headers);*/
+            alert('Log in failed!');
+            document.getElementById('submitButton').style.display = '';
+            document.getElementById('falseButton').style.display = 'none';
             
         });
     }

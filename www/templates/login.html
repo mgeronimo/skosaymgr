@@ -30,12 +30,13 @@
 
             <div class="list list-inset" style="margin-top: -1em; background-color:#00b9f2">
 
-                <button class="button button-block button-energized"
+                <button id="submitButton" class="button button-block button-energized"
                         ng-disabled = "loginForm.$invalid"                  
                         type = "submit"
                         >Sign In 
                     <span class="ion-refreshing"></span>
                 </button>
+                <button id="falseButton" class="button button-block button-energized" disabled style="display: none;">Signing in. Please wait <span class="ion-refreshing"></span></button>
 
                 <button class="button button-block button-clear"
                         style="color:white;"
