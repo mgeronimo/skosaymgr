@@ -18,7 +18,7 @@ angular.module('skosayMgr.messages', [])
             
             newList.stores=data.stores;
         
-            console.log(newList.stores ,$scope);
+            console.log(newList.stores,$scope);
             $state.go('app.newMsgs', { id: $scope.id });
         })
         .error(function(data, status, headers, config) {

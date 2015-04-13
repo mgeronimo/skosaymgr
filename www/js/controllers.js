@@ -36,9 +36,9 @@ angular.module('skosayMgr.controllers', [])
             console.log('***SUCCESS***'+'\n'+data.status_code);
                 //$location.path('app/newMsgs');
 
- //           $state.go('app.newMsgs', { id: data.userid });
-   //         $state.go('app.inProgress', { id: data.userid });
-            $state.go('app.resolved', { id: data.userid });
+            $state.go('app.newMsgs', { id: data.userid });
+ //           $state.go('app.inProgress', { id: data.userid });
+   //         $state.go('app.resolved', { id: data.userid });
           })
           .error(function(data, status, headers, config) {
 

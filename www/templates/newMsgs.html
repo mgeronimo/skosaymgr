@@ -1,11 +1,20 @@
-<ion-view view-title="New Message(s)"
-          >
+<ion-view view-title="New Message(s)">
   <ion-content>
     <ion-list ng-controller="NewMessagesController as newMsgsCtrl">
-      <ion-item ng-repeat="store in newMsgsCtrl.newList.stores">
-          <img ng-src="img/icons/{{store.photo}}">
-        <h1>{{store.storename}}</h1>
-          <h3>{{store.address}}</h3>
+      <ion-item>
+          <img ng-src="img/icons/{{newMsgsCtrl.newList.store[0].photo}}">
+          <h1>{{newList.store[0].storename}}</h1>
+          <h3>{{newMsgsCtrl.newList.store[0].address}}</h3>
+        </ion-item>
+      <ion-item>
+          <img ng-src="img/icons/{{newMsgsCtrl.newList.store[1].photo}}">
+          <h1>{{newMsgsCtrl.newList.store[1].storename}}</h1>
+          <h3>{{newMsgsCtrl.newList.store[1].address}}</h3>
+        </ion-item>
+      <ion-item>
+          <img ng-src="img/icons/{{newMsgsCtrl.newList.store[2].photo}}">
+          <h1>{{newMsgsCtrl.newList.store[2].storename}}</h1>
+          <h3>{{newMsgsCtrl.newList.store[2].address}}</h3>
         </ion-item>
     </ion-list>
   </ion-content>
